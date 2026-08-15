@@ -1,0 +1,81 @@
+name: correspondence
+description: "المراسلات الرسمية — توليد الرسائل الرسمية العربية بالذكاء الاصطناعي، بقاعدة بيانات محلية بالكامل."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.8
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # قاعدة البيانات المحلية (نفس مخطط نسخة سطح المكتب ليتيسر الاستيراد لاحقًا)
+  sqflite: ^2.4.1
+  path: ^1.9.0
+  path_provider: ^2.1.5
+
+  # مزودات الذكاء الاصطناعي (REST مباشر بلا SDK)
+  http: ^1.2.2
+
+  # مفاتيح API في Android Keystore، وبقية الإعدادات في SharedPreferences
+  flutter_secure_storage: ^9.2.2
+  shared_preferences: ^2.3.3
+
+  # توليد PDF عربي RTL ومعاينته ومشاركته
+  pdf: ^3.11.1
+  printing: ^5.13.4
+  share_plus: ^10.1.2
+
+  # التاريخ الهجري (أم القرى)
+  hijri: ^3.0.0
+
+  # ضغط ZIP لتوليد ملفات DOCX (حزمة OOXML)
+  archive: ^3.6.1
+
+  # رفع صورة الترويسة من المعرض
+  image_picker: ^1.1.2
+
+  # فتح صفحة إنشاء المفتاح لدى المزود
+  url_launcher: ^6.3.1
+
+  # اختيار ملف النسخة الاحتياطية للاستيراد
+  file_picker: ^8.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.1
+
+# توليد أيقونات المشغّل: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/icon/icon.png"
+  adaptive_icon_background: "#14532D"
+  adaptive_icon_foreground: "assets/icon/icon_foreground.png"
+  adaptive_icon_monochrome: "assets/icon/icon_foreground.png"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/fonts/
+
+  fonts:
+    - family: PlexArabic
+      fonts:
+        - asset: assets/fonts/IBMPlexSansArabic-Regular.ttf
+        - asset: assets/fonts/IBMPlexSansArabic-Bold.ttf
+          weight: 700
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/Amiri-Regular.ttf
+        - asset: assets/fonts/Amiri-Bold.ttf
+          weight: 700

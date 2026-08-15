@@ -1,5 +1,5 @@
 /// قاعدة البيانات المحلية (SQLite): المنشآت، الرسائل، الجهات، المراجعات…
-/// المخطط مطابق لنسخة سطح المكتب (diwan) ليتيسر استيراد قاعدة قائمة لاحقًا.
+/// المخطط مطابق لنسخة سطح المكتب ليتيسر استيراد قاعدة قائمة لاحقًا.
 library;
 
 import 'dart:convert';
@@ -125,7 +125,7 @@ const _seedEntities = [
 String _now() => DateTime.now().toUtc().toIso8601String().split('.').first;
 
 // أعمدة أُضيفت بعد الإصدار الأول في نسخة سطح المكتب — تُرحَّل تلقائيًا
-// عند استيراد قاعدة diwan.db قديمة لا تحتويها.
+// عند استيراد قاعدة قديمة لا تحتويها.
 const _letterMigrations = [
   ('recipient_id', 'INTEGER'),
   ('recipient_seq', 'INTEGER'),
@@ -732,7 +732,7 @@ class AppDb {
     return dest;
   }
 
-  /// استيراد قاعدة (من هذا التطبيق أو من نسخة سطح المكتب diwan.db):
+  /// استيراد قاعدة (من هذا التطبيق أو من نسخة سطح المكتب):
   /// يتحقق من البنية، يحفظ نسخة أمان من القاعدة الحالية، ثم يستبدلها.
   /// الترحيلات (الأعمدة المستحدثة) تُطبَّق تلقائيًا عند إعادة الفتح.
   Future<void> importBackup(String srcPath) async {
@@ -752,7 +752,7 @@ class AppDb {
       if (!tables.contains('letters') || !tables.contains('entities')) {
         throw const FormatException(
             'القاعدة لا تحوي جداول النظام (letters/entities) — '
-            'اختر ملف diwan.db أو نسخة احتياطية من هذا التطبيق');
+            'اختر ملف قاعدة نسخة سطح المكتب أو نسخة احتياطية من هذا التطبيق');
       }
     } finally {
       await candidate.close();
